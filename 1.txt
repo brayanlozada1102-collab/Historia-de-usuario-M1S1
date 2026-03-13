@@ -1,0 +1,59 @@
+﻿1. La Estructura de la Clase (class InventoryApp)
+Una clase es como un "molde". En lugar de tener funciones sueltas, agrupamos todo lo que necesita nuestra aplicación en un solo lugar.
+* __init__(self, root): Es el constructor. Se ejecuta automáticamente en cuanto abres el programa.
+   * self.root = root: Guarda la ventana principal para que todas las funciones de la clase puedan acceder a ella.
+   * self.products = []: Aquí creamos nuestra "base de datos" volátil. Es una lista vacía que guardará los diccionarios de cada producto.
+   * self.create_widgets(): Llama a la función que dibuja los botones y textos.
+________________
+
+
+2. Creación de la Interfaz (create_widgets)
+Esta función se encarga de la parte visual (lo que el usuario ve).
+* self.entries = {}: Creamos un diccionario vacío para guardar las "cajas de texto" (Entries).
+* El bucle for field in [...]: Para no escribir el mismo código tres veces (Nombre, Precio, Cantidad), usamos un ciclo que crea la etiqueta (Label) y la entrada (Entry) automáticamente.
+* self.entries[field] = entry: Guardamos cada entrada en nuestro diccionario para poder sacar el texto de ahí más tarde.
+* Botones (tk.Button): Cada botón tiene un parámetro llamado command. Este es el "cable" que conecta el clic del ratón con la función lógica (ej. command=self.add_product).
+________________
+
+
+3. Lógica de Agregado (add_product)
+Es el corazón del programa. Aquí es donde transformamos lo que el usuario escribe en datos reales.
+* try...except: Es un escudo. Si el usuario escribe "letras" en el campo de precio, el programa no se "rompe" (crash), sino que atrapa el error y muestra un mensaje amigable.
+* self.entries["Name"].get().strip():
+   * .get() extrae el texto.
+   * .strip() elimina espacios en blanco accidentales al inicio o final.
+El Diccionario (new_product):
+Python
+new_product = {"name": name, "price": price, ...}
+* Agrupamos los datos relacionados en una sola variable. Es mucho más fácil manejar un "paquete" que cuatro variables sueltas.
+* self.products.append(new_product): Metemos ese paquete en nuestra lista global.
+________________
+
+
+4. Generación de Reportes (show_summary)
+Esta función procesa todos los datos guardados para dar información útil.
+* List Comprehension (sum(p['total'] for p in self.products)):
+Es una forma elegante de decir: "Recorre cada producto p en la lista, agarra su valor total y súmalos todos".
+* El Bucle for p in self.products:
+Construye un string (texto) largo acumulando el nombre y el precio de cada objeto. El símbolo \n es un salto de línea para que el resumen no se vea todo amontonado.
+* messagebox.showinfo: Abre la ventanita emergente con el reporte final.
+________________
+
+
+5. Utilidades y Ejecución
+   * clear_fields(self): Simplemente limpia las cajas de texto para que el usuario pueda escribir el siguiente producto sin tener que borrar manualmente.
+   * if __name__ == "__main__":: Esta línea asegura que el código solo se ejecute si abres ese archivo directamente, y no si lo importas desde otro lado. Es una excelente práctica de Python.
+________________
+
+
+Resumen de Funcionalidades
+Funcionalidad
+	Cómo funciona
+	Validación
+	El bloque try/except evita que metas datos basura.
+	Persistencia temporal
+	La lista self.products mantiene los datos vivos mientras la ventana esté abierta.
+	Cálculo automático
+	El programa calcula el total por producto y el gran total del inventario sin que el usuario haga nada.
+	Feedback visual
+	El status_label cambia a verde y muestra el último movimiento para confirmar que todo salió bien.
