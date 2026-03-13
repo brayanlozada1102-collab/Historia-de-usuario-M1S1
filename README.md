@@ -31,9 +31,11 @@ This program captures product data including name, price, and quantity. It featu
 Enter the product name: Monitor
 Enter the unit price: 150.00
 Enter the inventory quantity: 5
-Do you want to continue recording sales? Yes/No: no
+Do you want to continue recording products? Yes/No: no
 
 Inventory 
 -----------------------
 [Product details list]
 The total inventory values: $750.0
+```
+![alt text](image.png)

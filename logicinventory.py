@@ -7,6 +7,6 @@ def inventory_register(product_name,quantity,unit_value,daily_sales: list):
     daily_sales.append(update)
 # function to display the contents of the list in an ordered manner
 def show_summary(daily_sales: list):
-    for i in range(len(daily_sales)):
-        print(f"{daily_sales[i]['name']} \nQuantity of product in the inventory: {daily_sales[i]['quantity']} \nPrice per unit: ${daily_sales[i]['unitvalue']}\nTotal value of the product in inventory${daily_sales[i]['unitvalue']*daily_sales[i]['quantity']}")
+    for i in daily_sales:
+        print(f"{i['name']} \nQuantity of product in the inventory: {i['quantity']} \nPrice per unit: ${i['unitvalue']}\nTotal value of the product in inventory${i['unitvalue']*i['quantity']}")
         print("--------------------")

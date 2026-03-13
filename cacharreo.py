@@ -4,6 +4,7 @@ from tkinter import messagebox
 class InventoryApp:
     def __init__(self, root):
         """Initialize the main window and the data storage."""
+        
         self.root = root
         self.root.title("Inventory System Pro")
         self.root.geometry("400x500")
