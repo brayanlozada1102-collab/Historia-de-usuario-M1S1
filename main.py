@@ -42,7 +42,7 @@ while start:
 
 
 
-# Display results in console with the requested format
+# Display results in console.
 print("\nInventory \n-----------------------")
 show_summary(daily_sales)
 print(f"The total inventory values: ${inventory_valeu}")
