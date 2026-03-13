@@ -1,15 +1,17 @@
-from logicinventory import sales_register , show_summary
+# Function import
+from logicinventory import inventory_register , show_summary
 # INVENTORY REGISTRATION PROGRAM
-daily_revenue = 0
+inventory_valeu = 0
 daily_sales = []
 start = True
 print("Welcome to the inventory registration system \n -----------------------")
 start = True
 
-# Request and validate the price (must be a decimal/float)
+
 while start:
     # Request the product name
     name = input("Enter the product name: ")
+    # Request and validate the price (must be a decimal/float)
     try:
         price = float(input("Enter the unit price: "))
         if price < 0:
@@ -17,7 +19,7 @@ while start:
             continue
     except ValueError:
         print("Error: Please enter a numeric value for the price.")
- # Request and validate the quantity (must be an integer/int)
+    # Request and validate the quantity (must be an integer/int)
     try:
         quantity = int(input("Enter the inventory quantity: "))
         if quantity < 0:
@@ -26,11 +28,11 @@ while start:
     except ValueError:
         print("Error: Please enter a whole number for the quantity.")
 
-    sales_register(name,quantity,price,daily_sales)
-  # Mathematical operation: Calculate total cost
+    inventory_register(name,quantity,price,daily_sales)
+  # Mathematical operation: Calculate total inventory cost
   # Price (float) is multiplied by quantity (int)
-    daily_revenue = daily_revenue + (quantity*price)
-
+    inventory_valeu = inventory_valeu + (quantity*price)
+  # Question to validate continuity
     try:
        switch = input("Do you want to continue recording sales? Yes/No: ").lower()
        if switch != "yes":
@@ -43,7 +45,7 @@ while start:
 # Display results in console with the requested format
 print("\nInventory \n-----------------------")
 show_summary(daily_sales)
-print(f"The total inventory values: ${daily_revenue}")
+print(f"The total inventory values: ${inventory_valeu}")
 
 # General comment:
 # This program allows registering a product by capturing its name, price, and quantity.
