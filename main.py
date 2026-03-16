@@ -15,19 +15,21 @@ def main(inventory_valeu,daily_sales:list):
      # Request and validate the price (must be a decimal/float)
      try:
         price = float(input("Enter the unit price: "))
-        if price < 0:
+        if price <= 0:
             print("Error: The price cannot be negative.")
             continue
      except ValueError:
         print("Error: Please enter a numeric value for the price.")
+        continue
      # Request and validate the quantity (must be an integer/int)
      try:
         quantity = int(input("Enter the inventory quantity: "))
-        if quantity < 0:
+        if quantity <= 0:
             print("Error: The quantity cannot be negative.")
             continue
      except ValueError:
         print("Error: Please enter a whole number for the quantity.")
+        continue
 
      inventory_register(name,quantity,price,daily_sales)
      # Mathematical operation: Calculate total inventory cost
