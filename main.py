@@ -1,5 +1,5 @@
-# Function import
 from logicinventory import inventory_register , show_summary
+# Function import
 # INVENTORY REGISTRATION PROGRAM
 inventory_valeu = 0
 daily_sales = []
